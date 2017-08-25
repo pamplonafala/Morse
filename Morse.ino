@@ -35,5 +35,5 @@ void startSignal() {
 
 void loop() {
   startSignal();
-  morse.emit("helo world");
+  morse.emit("hello world");
 }
