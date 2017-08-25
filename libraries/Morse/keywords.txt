@@ -1,0 +1,22 @@
+#############################################
+# Datatypes (KEYWORD1)
+#############################################
+
+Morse KEYWORD1
+
+#############################################
+# Methods, Functions and Instances (KEYWORD2)
+#############################################
+
+dot KEYWORD2
+dash KEYWORD2
+next KEYWORD2
+space KEYWORD2
+emit KEYWORD2
+emitMorse KEYWORD2
+#receive KEYWORD2
+#receiveMorse KEYWORD2
+
+#############################################
+# Constants (LITERAL1)
+#############################################
