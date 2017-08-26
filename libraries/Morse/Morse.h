@@ -5,12 +5,14 @@
 
 class Morse {
 	public:
-		Morse(int pin, int u);
+		Morse(int pin, int u, int frequency);
 		void emit(String text);
+		void unit();
 	
 	private:
 		int _pin;
 		int _u;
+		int _f;
 		void dot();
 		void dash();
 		void next();

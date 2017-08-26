@@ -1,11 +1,17 @@
 
 
 #include "Morse.h"
-int ledPin = LED_BUILTIN;
-int u = 200; //time unit in millisecons
-Morse morse(ledPin, u);
+String readString;
+int ledPin = 13;
+int u = 500; //time unit in millisecons
+int f; //frequency for tone
+Morse morse(ledPin, u, 4000);
 
-void setup() {}
+void setup() {
+  startSignal();
+  Serial.begin(9600);
+  Serial.println(HIGH);
+}
 
 void startSignal() {
   //5 BLINKS
@@ -18,13 +24,10 @@ void startSignal() {
   delay(u-100);
   
   //DOT LENGTH FOR UNIT RECOGNIZING 
-  digitalWrite(ledPin, HIGH);
-  delay(u);
-  digitalWrite(ledPin, LOW);
-  delay(u);
+  morse.unit();
 
-  //3 MORE BLINKS
-  for (int i = 0; i < 3; i++) {
+  //4 MORE BLINKS
+  for (int i = 0; i < 4; i++) {
     digitalWrite(ledPin, HIGH);
     delay(100);
     digitalWrite(ledPin, LOW);
@@ -34,6 +37,11 @@ void startSignal() {
 }
 
 void loop() {
-  startSignal();
-  morse.emit("hello world");
+  String text;
+  if (Serial.available() > 0) {
+    text = Serial.readString();
+    Serial.println("Emitting: " + text);
+    morse.emit(text);
+    Serial.println("Finished emmiting");
+  }
 }

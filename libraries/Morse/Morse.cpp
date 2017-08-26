@@ -3,24 +3,28 @@
 #include "Morse.h"
 #include <Arduino.h>
 
-Morse::Morse(int pin, int u) {
+Morse::Morse(int pin, int u, int frequency) {
 	_pin = pin;
 	_u = u;
+	_f = frequency;
 	pinMode(_pin, OUTPUT);
 	Serial.begin(9600);
 }
 void Morse::dot() {
+	tone(_pin, _f, _u);
 	digitalWrite(_pin, HIGH);
 	delay(_u);
 	digitalWrite(_pin, LOW);
 	delay(_u);
 }
 void Morse::dash() {
+	tone(_pin, _f, 3*_u);
 	digitalWrite(_pin, HIGH);
 	delay(_u*3);
 	digitalWrite(_pin, LOW);
 	delay(_u);
 }
+void Morse::unit() {dot();}
 void Morse::next() {delay(_u*3-_u);}
 void Morse::space() {delay(_u*7-_u);}
 void Morse::emitMorse(char letter) {
