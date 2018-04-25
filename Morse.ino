@@ -4,8 +4,8 @@
 String readString;
 int ledPin = 13;
 int u = 500; //time unit in millisecons
-int f; //frequency for tone
-Morse morse(ledPin, u, 4000);
+int f = 4000; //frequency for tone
+Morse morse(ledPin, u, f);
 
 void setup() {
   startSignal();
