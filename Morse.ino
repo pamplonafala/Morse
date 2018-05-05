@@ -42,6 +42,6 @@ void loop() {
     text = Serial.readString();
     Serial.println("Emitting: " + text);
     morse.emit(text);
-    Serial.println("Finished emmiting");
+    Serial.println("END");
   }
 }
